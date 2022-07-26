@@ -1,0 +1,10 @@
+#!/bin/sh
+
+read -r cur_bri < /sys/class/backlight/intel_backlight/brightness
+read -r max_bri < /sys/class/backlight/intel_backlight/max_brightness
+
+delta=$((2*(max_bri/100)))
+cur_bri=$((cur_bri+delta))
+[ $cur_bri -gt $max_bri ] && cur_bri=$max_bri
+
+echo $cur_bri > /sys/class/backlight/intel_backlight/brightness

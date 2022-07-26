@@ -1,0 +1,61 @@
+super + shift + e
+    berryc quit
+
+super + backspace
+    pkill -USR1 -x sxhkd
+
+
+
+super + q
+    berryc window_close
+
+super + shift + q
+    xkill
+
+super + c
+    berryc window_center
+
+super + f
+    berryc fullscreen
+
+alt + Tab
+    berryc cycle_focus
+
+
+
+super + d
+    dmenu_run
+
+super + w
+    firefox --new-tab
+
+super + Return
+    urxvt
+
+super + s
+    status
+
+super + shift + w
+    wllppr
+
+
+
+XF86Audio{Raise,Lower}Volume
+    amixer sset Master 2%{+,-}
+
+XF86AudioMute
+    amixer sset Master toggle
+
+XF86MonBrightness{Up,Down}
+    light -{A,U} 2
+
+
+
+super + {1-9}
+    berryc switch_workspace {0-9}
+
+super + shift + {1-9}
+    berryc send_to_workspace {0-9}
+
+~button1
+    berryc pointer_focus

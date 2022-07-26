@@ -1,0 +1,7 @@
+#!/bin/sh
+
+WPA_IFACE=wlan0
+
+[ -e /var/service/udevd ] && WPA_IFACE=wlp1s0
+
+exec wpa_supplicant -i $WPA_IFACE -c /etc/wpa_supplicant/wpa_supplicant.conf 2>&1 >/dev/null

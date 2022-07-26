@@ -1,0 +1,2 @@
+#!/bin/sh
+exec dhcpcd -BMqq 2>&1 >/dev/null
