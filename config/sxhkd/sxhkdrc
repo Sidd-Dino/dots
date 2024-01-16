@@ -1,0 +1,27 @@
+super + shift + BackSpace
+    pkill -USR1 -x sxhkd
+
+
+super + shift + q
+    xkill
+
+
+super + Return
+    uxterm -e "tmux -f ~/.config/tmux/tmux.conf"
+
+super + d
+    rofi -show drun
+
+super + w
+    firefox --new-tab
+
+
+XF86Audio{Raise,Lower}Volume
+    amixer sset Master 2%{+,-}
+
+XF86AudioMute
+    amixer sset Master toggle
+
+XF86MonBrightness{Up,Down}
+    light -{A,U} 2
+

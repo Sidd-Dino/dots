@@ -1,0 +1,2 @@
+#include ".config/Xresources/xterm.Xresources"
+#include ".config/Xresources/mocha.Xresources"

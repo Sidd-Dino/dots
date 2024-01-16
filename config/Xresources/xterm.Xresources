@@ -1,0 +1,18 @@
+*internalBorder      : 7
+
+*locale              : true
+*utf8                : true
+*utf8Fonts           : true
+*faceName            : xft:JetBrainsMono NF
+*faceSize            : 7
+*renderFont          : true
+
+*scrollBar           : false
+*rightScrollBar      : false
+*scrollTtyOutput     : false
+*fastScroll          : false
+*scrollBarBorder     : 0
+*saveLines           : 0
+
+*cursorBlink         : true
+*metaSendsEscape     : true
