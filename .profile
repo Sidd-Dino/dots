@@ -7,5 +7,6 @@ export MAKEFLAGS="-j7"
 export CMAKE_GENERATOR=Ninja
 export PATH="$PATH:$HOME/bin"
 export ENV="$HOME/.rc"
-
 export EDITOR=nvim
+
+export LIBVA_DRIVER_NAME=i965

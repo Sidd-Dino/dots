@@ -1,0 +1,9 @@
+. --autoload --no-alias initialization/common
+
+bindkey --emacs      '\^L' clear-and-redraw-all
+bindkey --vi-insert  '\^L' clear-and-redraw-all
+bindkey --vi-command '\^L' clear-and-redraw-all
+
+YASH_PS1='% '
+
+. "$HOME/.profile"
