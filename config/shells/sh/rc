@@ -1,5 +1,12 @@
 #!/bin/sh
 
-set -o vi
+common_dir="${XDG_CONFIG_HOME:-${HOME}/.config}/shells/common"
 
-. "${HOME}/.config/shells/common/paths.sh"
+if [ -d "${common_dir}" ]; then
+	for f in "${common_dir}"/*.sh ; do
+		[ -r "$f" ] && . "$f"
+	done
+	unset f
+fi
+
+unset common_dir

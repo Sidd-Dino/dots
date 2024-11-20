@@ -1,0 +1,5 @@
+config/tmux/plugins
+
+bin/*
+!bin/,*
+!bin/__*

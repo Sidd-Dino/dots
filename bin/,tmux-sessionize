@@ -1,0 +1,25 @@
+#!/bin/sh
+
+session_dir="${1:-"$(
+    find -L \
+        /mnt/extra_space/01-projects/*/ \
+        /mnt/extra_space/02-sandbox/01-code \
+        "${HOME}/.config" \
+        -mindepth 1 -maxdepth 1 -type d \
+    | fzf
+)"}"
+
+[ -z "${session_dir}" ] && exit 1
+[ -d "${session_dir}" ] || exit 1
+
+session_dir="${session_dir%"${session_dir##*[!/]}"}"
+
+session="$(basename "${session_dir}" | tr . _)"
+
+tmux has-session -t="${session}" 2>/dev/null ||
+    tmux new-session -d -s "${session}" -c "${session_dir}"
+
+case "${TMUX}" in
+    "") tmux attach-session -d -t "${session}" ;;
+    *)  tmux switch-client -t "${session}" ;;
+esac

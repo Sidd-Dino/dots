@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# create a project directory with the following structure
+#
+# XX-<name>
+# |-- 01-workspace
+# |-- 02-notes
+# '-- 03-reference
+
+err() { printf '[ERROR] %s' "$1"; exit 1; }
+
+find_available_directory() {
+	n=1
+	while [ "$n" -lt 99 ]; do
+		[ "$n" -lt 10 ] && n="0$n"
+		set -- "$n-"*
+
+		[ "$1" = "$n-*"] || continue
+
+		printf ''
+	done
+}
+
+find_available_directory
+
+dir_name="${dir_num}-${1:-UNDEFINED}"
+
+# mkdir -p \
+# 	"${dir_name}/workspace" \
+# 	"${dir_name}/notes" \
+# 	"${dir_name}/reference"

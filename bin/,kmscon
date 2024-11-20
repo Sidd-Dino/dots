@@ -1,0 +1,62 @@
+#!/bin/sh
+
+die() {
+	printf '[ERROR] %s\n' "$1" >&2
+	exit 1
+}
+
+is_tty() {
+	tty="$(tty)"
+	tty="${tty##*/}"
+
+	case "$tty" in
+		tty[0-9]) : ;;
+		*) die "Not a tty"
+	esac
+}
+
+set_capabilities() {
+	kmscon_capabilities="$("$cmd_getcap" "$cmd_kmscon")"
+
+	[ "$kmscon_capabilities" ] || {
+		case "${cmd_su##*/}" in
+			su) "$cmd_su" -c "$cmd_setcap" cap_sys_tty_config,cap_sys_admin=ep "$cmd_kmscon" ;;
+			*) "$cmd_su" -- "$cmd_setcap" cap_sys_tty_config,cap_sys_admin=ep "$cmd_kmscon"  ;;
+		esac
+	}
+}
+
+main() {
+	set -ef
+
+	is_tty
+
+	cache_dir="${HOME}/.cache/kmscon"
+
+	mkdir -p "$cache_dir"
+
+	cmd_su="$(
+		command -v sudo ||
+		command -v doas ||
+		command -v su
+	)" || cmd_su=su
+
+	cmd_kmscon="$( command -v kmscon )" || die 'kmscon: command not found'
+
+	cmd_getcap="$( command -v getcap )" || die 'No getcap utility found'
+	cmd_setcap="$( command -v setcap )" || die 'No kmscon utility found'
+
+	set_capabilities
+
+	"$cmd_kmscon" \
+		--drm --hwaccel \
+		--session-control \
+		--login -- "$(which fish)" \
+	& # runs in background
+
+	printf '%s' "$!" > "${cache_dir}/${tty}"
+
+	kill -18 $!
+}
+
+main "$@"

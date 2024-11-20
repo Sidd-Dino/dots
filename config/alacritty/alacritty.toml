@@ -1,0 +1,19 @@
+[terminal.shell]
+    program = "/usr/bin/fish"
+
+[window]
+    padding = { x = 5, y = 5 }
+    dynamic_padding = true
+    decorations = "None"
+
+[font]
+    normal = { family = "JetBrainsMono NF", style = "Regular" }
+    size = 5.5
+
+[cursor]
+    style = { shape = "Block", blinking = "On" }
+
+[general]
+    import = [
+        "~/.config/alacritty/rose-pine.toml",
+    ]
