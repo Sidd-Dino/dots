@@ -1,5 +1,5 @@
-config/tmux/plugins
+local/bin/*
+!local/bin/,*
+!local/bin/__*
 
-bin/*
-!bin/,*
-!bin/__*
+xdg_config/tmux/plugins

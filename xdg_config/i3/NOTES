@@ -1,0 +1,32 @@
+4 -> Super
+1 -> Alt
+
+[default]
+4-h     focus left
+4-j     focus right
+4-k     focus up
+4-l     focus down
+
+4-f     fullscreen
+4-
+
+4-w     GOTO window
+
+
+[window]
+h       focus left
+j       focus right
+k       focus up
+l       focus down
+
+S-h     move win  left
+S-j     move win  right
+S-k     move win  up
+S-l     move win  down
+
+q       kill window
+
+
+________________________________________________________________________________
+
+
